@@ -1,0 +1,20 @@
+# Environment values here will be overridden/set from the values in
+# bushwacker.ini
+
+bundles:
+  js:
+    output: js/site.%(version)s.js
+    contents:
+      - output: js/bootstrap.js
+        # Note we want bootstrap to always be merged
+        debug: False
+        contents:
+          - js/bootstrap/*.js
+
+  css:
+    output: css/site.%(version)s.css
+    contents:
+      - filters: less
+        output: css/bootstrap.css
+        contents:
+          - css/bootstrap.less

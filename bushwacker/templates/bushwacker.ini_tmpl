@@ -1,0 +1,34 @@
+[bushwacker]
+# debug = false
+src = {{output_dir}}
+dst = {{output_dir}}/_site
+static = ${dst}/static
+templates = {{output_dir}}/_templates
+# In debug mode fixie.js is enabled and webassets is set to debug
+debug = true
+
+[webassets]
+directory = ${bushwacker:dst}${url}
+url = /assets
+load_path = {{output_dir}}/_assets
+
+[site]
+analytics_id = xxxxxxxx
+analytics_domain = bushwacker.io
+
+[blog]
+post_url = /blog/%(year)s/%(month)s/%(day)s/%(slug)s
+post_template = {{output_dir}}/_templates/post.j2
+post_dir = {{output_dir}}/_posts
+tags = /blog/tags
+tags_template = {{output_dir}}/_templates/tags.j2
+
+[app:main]
+use = egg:Paste#static
+# Interpolation won't work here
+document_root = {{output_dir}}/_site
+
+[server:main]
+use = egg:Paste#http
+host = 127.0.0.1
+port = 8080

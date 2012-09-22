@@ -1,0 +1,12 @@
+{% assets "js" %}
+<script src="{{ ASSET_URL }}"></script>
+{% endassets %}
+{% if not bushwacker.debug %}
+<script>var _gaq=[['_setAccount','{{ site.analytics_id }}'],['_setDomainName','{{ site.analytics_domain }}'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src=('//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'));</script>
+{% endif %}
+{% if bushwacker.debug %}
+<script src="https://raw.github.com/ryhan/fixie/master/fixie_min.js"></script>
+<script>
+fixie.setImagePlaceholder('http://flickholdr.com/${w}/${h}/canon').init()
+</script>
+{% endif %}

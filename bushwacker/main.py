@@ -143,6 +143,10 @@ class Generator(utils.DaemonThread):
         for load_path in self.assets.load_path:
             if load_path in trigger_path:
                 self._bundle()
+                # NOTE(jkoelker) If an asset is updated, the site needs
+                #                to be generated so the asset links are
+                #                correct
+                self._site()
                 return
 
         if self.config['bushwacker']['src'] in trigger_path:

@@ -51,4 +51,5 @@ class Jinja2(Base):
         if not context:
             context = dict()
         template = self.environment.get_template(template)
-        return template.stream(context).dump(output_file)
+        return template.stream(context).dump(output_file,
+                                             encoding='utf-8')
